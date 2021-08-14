@@ -43,12 +43,6 @@ body {
 
 /* Header */
 
-.logo-img{
-  width: 65px;
- height: 20px;
- font-size: 4rem;
- }
-
 .main-header {
   padding-inline-end: 15.437rem;
   padding-inline-start: 5rem;
@@ -113,10 +107,20 @@ body {
 /* Main-Content */
 
 .main-content {
+  position: relative;
+  overflow-y: hidden;
+
   margin-top: 20px;
   display: flex;
   justify-content: center;
   gap: 5.25rem;
+}
+
+.main-content .wow-bgc {
+  z-index: -1;
+  position: absolute;
+  width: 55.875rem;
+  height: 55.875rem;
 }
 
 .main-content .meme-tools {
@@ -129,6 +133,14 @@ body {
   border-radius: 30px;
   background-color: #383b42;
   padding: 1.5rem;
+}
+
+.main-content .meme-tools img {
+  transition: transform 0.3s;
+}
+
+.main-content .meme-tools img:hover {
+  transform: rotate(15deg);
 }
 
 .main-content .meme-tools .meme-text {
@@ -159,6 +171,24 @@ body {
   background-color: transparent;
 }
 
+.main-content .meme-tools .save-btn {
+  color: white;
+  font-family: Poppins-light, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  width: 3.5rem;
+  height: 3rem;
+  background-color: rgb(231, 126, 235);
+  border-radius: 10px;
+  box-shadow: 1px 5px 0 #d752db, inset 0 5px 0 #e9aad9;
+
+  transition: 0.3s;
+}
+
+.main-content .meme-tools .save-btn:hover {
+  transform: rotate(15deg);
+}
+
 .main-content .positioning-tools {
   padding: 16px;
   display: flex;
@@ -178,6 +208,33 @@ body {
 .lower-tools {
   display: flex;
   gap: 2.187rem;
+}
+
+.main-content .meme-tools .download-container {
+  margin-top: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-link {
+  text-decoration: none;
+  color: white;
+
+  transition: 0.3s;
+}
+
+.share-link:hover {
+  color: rgb(72, 190, 219);
+}
+
+.meme-tools .download-container img {
+  cursor: pointer;
+}
+
+.meme-tools .download-container img:hover {
+  transform: rotate(5deg);
 }
 
 .main-content .color-btn {
@@ -233,6 +290,11 @@ body {
   gap: 15px;
 }
 
+.nav-filter {
+  display: flex;
+  gap: 10px;
+}
+
 .gallery-container .nav-filter-container {
   display: flex;
   justify-content: space-around;
@@ -247,12 +309,37 @@ body {
   font-size: 1.5rem;
 }
 
+.gallery-container .nav-filter-container li {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.gallery-container .nav-filter-container li:hover {
+  color: #383b42;
+}
+
 .gallery-container input {
   width: 33.5rem;
   border-radius: 29px;
   background-color: #22252c;
   border: none;
   outline: none;
+  padding-inline-start: 3rem;
+  font-size: 1.5rem;
+  color: rgb(226, 226, 226);
+  height: 3rem;
+}
+
+.search-bar {
+  position: relative;
+}
+
+.search-icon {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 7px;
+  width: 30px;
 }
 
 .gallery-container .gallery-nav button {
@@ -278,6 +365,24 @@ body {
   margin-top: 2.75rem;
   padding-left: 30px;
   padding-right: 30px;
+  overflow-y: scroll;
+  height: 60vh;
+}
+
+.gallery-container .photos::-webkit-scrollbar {
+  width: 12px;
+}
+
+.gallery-container .photos::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.gallery-container .photos::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  background-color: #22252c;
+  background-image: linear-gradient(-86deg, #33be6d 0%, #0c98b9 100%);
 }
 
 .gallery-container .img-item {
@@ -287,8 +392,174 @@ body {
   height: 10.8125rem;
   object-fit: cover;
   box-shadow: 1px 7px 12px 4px rgb(0 0 0 / 30%);
+
+  transition: box-shadow 0.3s;
+}
+
+.gallery-container .img-item:hover {
+  box-shadow: 1px 7px 12px 12px rgb(0 0 0 / 40%);
 }
 
 .hide {
   opacity: 0;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 1250px) {
+  .nav-filter .nav-filter-container {
+    width: 24rem;
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 1104px) {
+  .main-content {
+    gap: 10px;
+  }
+}
+@media screen and (max-width: 1033px) {
+  .main-content {
+    gap: 10px;
+  }
+  .gallery-container .gallery-nav input {
+    height: 3rem;
+    width: 31rem;
+  }
+
+  .gallery-container .gallery-nav {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .gallery-container .photos {
+    justify-content: center;
+  }
+
+  .nav-filter {
+    display: flex;
+    gap: 5px;
+  }
+
+  .main-header {
+    padding-inline-end: 1rem;
+  }
+}
+
+@media screen and (max-width: 988px) {
+  .main-content .meme-tools {
+    width: 28.812rem;
+    height: 31.125rem;
+  }
+
+  .main-content .meme {
+    width: 28.812rem;
+    height: 31.125rem;
+  }
+
+  .main-header {
+    border-radius: 0;
+  }
+
+  .main-layout {
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .main-header .logo {
+    display: none;
+  }
+  .main-header .nav-content {
+    padding-inline-start: 4rem;
+  }
+  .main-content .wow-bgc {
+    display: none;
+  }
+  .main-content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main-content .meme {
+    width: 30rem;
+  }
+  .main-content .meme-tools {
+    width: 30rem;
+    height: 28rem;
+    gap: 10px;
+  }
+  .main-content .meme-tools .meme-text {
+    width: 21.3rem;
+    height: 2.4rem;
+  }
+
+  .main-content .positioning-tools {
+    width: 21.612rem;
+    height: 9.5rem;
+    padding: 8px;
+  }
+
+  .actions .buttons {
+    margin-bottom: 0;
+  }
+
+  .main-content .meme-tools img {
+    width: 50px;
+  }
+  .main-content .meme-tools select {
+    width: 21rem;
+    height: 3rem;
+    font-size: 1rem;
+  }
+
+  .upper-tools {
+    gap: 10px;
+    justify-content: space-between;
+  }
+  .lower-tools {
+    gap: 10px;
+  }
+
+  .meme-tools .download-container img {
+    width: 10rem;
+  }
+
+  .main-header {
+    padding-inline-start: 5rem;
+  }
+
+  .main-nav li {
+    margin-left: 0;
+  }
+
+  .main-header .links {
+    width: 18.3rem;
+    justify-content: space-between;
+  }
+
+  .main-content .meme-tools .save-btn {
+    height: 2.7rem;
+    width: 3rem;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .main-header .links {
+    width: 15rem;
+  }
+  .main-layout {
+    width: 530px;
+  }
+
+  .gallery-container .photos {
+    height: 80vh;
+  }
+
+  .gallery-container .img-item {
+    width: 11rem;
+  }
 }
